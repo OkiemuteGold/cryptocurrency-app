@@ -2,6 +2,12 @@
 
 `npm install antd @ant-design/icons react-redux @reduxjs/toolkit axios chart.js html-react-parser millify moment react-chartjs-2`
 
+### Add/Fix router
+`npm install react-router-dom`
+
+`import { BrowserRouter as Router } from 'react-router-dom';`
+`wrap <App /> with <Router>`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
