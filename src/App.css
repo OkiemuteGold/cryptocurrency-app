@@ -328,17 +328,20 @@
 .chart-header {
     display: flex;
     justify-content: space-between;
-    gap: 50px;
+    align-items: center;
+    gap: 20px 30px;
     color: var(--blue);
+    margin-bottom: 20px;
 }
 
 .chart-title {
     color: var(--blue) !important;
+    margin-bottom: 0 !important;
 }
 
 .price-container {
     display: flex !important;
-    gap: 20px !important;
+    gap: 10px 20px !important;
     align-items: center !important;
     -ms-flex-wrap: wrap !important;
     flex-wrap: wrap !important;
@@ -346,11 +349,13 @@
 
 .price-change {
     font-weight: 900 !important;
+    margin-bottom: 0 !important;
 }
 
 .current-price {
     margin-top: 0px !important;
     font-weight: 900 !important;
+    margin-bottom: 0 !important;
 }
 
 .home-heading-container {
@@ -403,7 +408,7 @@
     width: 100%;
     max-width: 200px;
     margin-top: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .select-time-period .ant-select-selector {

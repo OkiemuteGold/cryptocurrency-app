@@ -36,7 +36,7 @@ const CryptoDetails = () => {
     const cryptoDetails = data?.data?.coin;
     const coinHistory = cryptoHistory?.data;
 
-    console.log(cryptoHistory, cryptoDetails);
+    console.log(coinHistory, cryptoDetails);
 
     if (isFetching) return <Loader />;
 
@@ -129,8 +129,8 @@ const CryptoDetails = () => {
                 placeholder="Select TimePeriod"
                 onChange={(value) => setTimePeriod(value)}
             >
-                {time.map((date) => (
-                    <Option key={date}>{date}</Option>
+                {time.map((date, i) => (
+                    <Option value={date} key={i}>{date}</Option>
                 ))}
             </Select>
 
