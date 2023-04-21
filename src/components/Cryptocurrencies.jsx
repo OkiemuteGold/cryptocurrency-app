@@ -27,6 +27,12 @@ const Cryptocurrencies = ({ simplified }) => {
     return (
         <>
             {!simplified && (
+                <Typography.Title level={2} className="home-title text-center">
+                    Top Cryptocurrencies
+                </Typography.Title>
+            )}
+
+            {!simplified && (
                 <div className="search-crypto">
                     <Input
                         placeholder="Search Cryptocurrency"
