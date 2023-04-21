@@ -67,7 +67,7 @@ const Navbar = () => {
                 <Avatar src={icon} size="large" />
 
                 <Typography.Title level={2} className="logo">
-                    <NavLink to="/">Cryptoverse</NavLink>
+                    <NavLink to="/">CryptoInfo</NavLink>
                 </Typography.Title>
 
                 <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
