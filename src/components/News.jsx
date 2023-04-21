@@ -33,16 +33,14 @@ const News = ({ simplified }) => {
     console.log(cryptoNews, data, trendingNews?.value);
 
     return (
-        // <>
-        // </>
         <Row gutter={[24, 24]}>
-            <Col span={24}>
-                {!simplified && (
+            {!simplified && (
+                <Col span={24}>
                     <Title level={2} className="home-title">
                         Top Cryptocurrency News
                     </Title>
-                )}
-            </Col>
+                </Col>
+            )}
 
             {!simplified && (
                 <Col span={24}>

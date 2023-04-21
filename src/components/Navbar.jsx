@@ -64,7 +64,9 @@ const Navbar = () => {
     return (
         <div className={`nav-container ${theme}`}>
             <div className="logo-container">
-                <Avatar src={icon} size="large" />
+                <NavLink to="/">
+                    <Avatar src={icon} size="large" />
+                </NavLink>
 
                 <Typography.Title level={2} className="logo">
                     <NavLink to="/">CryptoInfo</NavLink>

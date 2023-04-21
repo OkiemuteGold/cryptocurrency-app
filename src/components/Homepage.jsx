@@ -84,7 +84,7 @@ const Homepage = () => {
                 </Title>
 
                 <Title level={3} className="show-more">
-                    <Link to="/cryptocurrencies">Show more</Link>
+                    <Link to="/cryptocurrencies">Show more cryptos</Link>
                 </Title>
             </div>
 
@@ -96,7 +96,7 @@ const Homepage = () => {
                 </Title>
 
                 <Title level={3} className="show-more">
-                    <Link to="/news">Show more</Link>
+                    <Link to="/news">Show more news</Link>
                 </Title>
             </div>
 
