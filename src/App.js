@@ -14,11 +14,11 @@ function App() {
                 <Navbar />
             </div>
 
-            <div className="main">
-                <Layout>
+            <main className="main">
+                <Layout className="contents">
                     <div className="routes">
                         <Routes>
-                            <Route path='/' element={<Homepage />} />
+                            <Route path='/' exact element={<Homepage />} />
                             <Route path='/exchanges' element={<Exchanges />} />
                             <Route path='/cryptocurrencies' element={<Cryptocurrencies />} />
                             <Route path='/crypto/:coinId' element={<CryptoDetails />} />
@@ -28,19 +28,20 @@ function App() {
                 </Layout>
 
                 <div className="footer">
-                    <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2023
-                        <Link to="/">
-                            Cryptoverse Inc.
-                        </Link> <br />
-                        All Rights Reserved.
+                    <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>
+                        Copyright © 2023 { }
+                        <a href="https://github.com/OkiemuteGold" target="_blank" rel="noopener noreferrer">
+                            OkiemuteGold
+                        </a>
                     </Typography.Title>
+
                     <Space>
                         <Link to="/">Home</Link>
                         <Link to="/exchanges">Exchanges</Link>
                         <Link to="/news">News</Link>
                     </Space>
                 </div>
-            </div>
+            </main>
         </div>
     );
 }
