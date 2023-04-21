@@ -20,6 +20,12 @@ OR `import Chart from 'chart.js/auto';`
 
 `https://www.chartjs.org/docs/3.3.0/getting-started/integration.html#bundlers-webpack-rollup-etc`
 
+#### Import for simple line chart
+
+`https://react-chartjs-2.js.org/examples/line-chart`
+
+`https://codesandbox.io/s/github/reactchartjs/react-chartjs-2/tree/master/sandboxes/line/default?from-embed=&file=/App.tsx`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -4,9 +4,23 @@ import React from 'react';
 import { Col, Row, Typography } from 'antd';
 
 import { Line } from 'react-chartjs-2';
-import { Chart, registerables } from 'chart.js';
+import {
+    Chart, CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend,
+} from 'chart.js';
 
-Chart.register(...registerables);
+Chart.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend,
+);
 
 const { Title } = Typography;
 
@@ -22,33 +36,17 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         coinTimestamp.push(new Date(coinHistory?.history[i].timestamp).toLocaleDateString());
     }
 
-    // let uniqueId = 1;
-
     const data = {
         labels: coinTimestamp,
         datasets: [
             {
-                // id: uniqueId += 1,
                 label: 'Price In USD',
                 data: coinPrice,
-                // fill: false,
                 backgroundColor: '#0071bd',
                 borderColor: '#0071bd',
             },
         ],
     };
-
-    // const options = {
-    //     scales: {
-    //         yAxes: [
-    //             {
-    //                 ticks: {
-    //                     beginAtZero: true,
-    //                 },
-    //             },
-    //         ],
-    //     },
-    // };
 
     return (
         <>
@@ -62,7 +60,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
 
             <Line
                 data={data}
-            // options={options}
             />
         </>
     );

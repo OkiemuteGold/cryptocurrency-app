@@ -36,7 +36,7 @@ const CryptoDetails = () => {
     const cryptoDetails = data?.data?.coin;
     const coinHistory = cryptoHistory?.data;
 
-    console.log(coinHistory, cryptoDetails);
+    // console.log(coinHistory, cryptoDetails);
 
     if (isFetching) return <Loader />;
 
