@@ -8,6 +8,18 @@
 `import { BrowserRouter as Router } from 'react-router-dom';`
 `wrap <App /> with <Router>`
 
+### Fix Error: "category" is not a registered scale
+
+#### Import and register chart
+`import { Chart, registerables } from 'chart.js';`
+`Chart.register(...registerables);`
+
+OR `import Chart from 'chart.js/auto';`
+
+`https://stackoverflow.com/questions/67727603/error-category-is-not-a-registered-scale`
+
+`https://www.chartjs.org/docs/3.3.0/getting-started/integration.html#bundlers-webpack-rollup-etc`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
