@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const location = useLocation();
 
-    const [current, setCurrent] = useState(menuItems.find(menuItem => location.pathname === menuItem.path).key);
+    const [current, setCurrent] = useState("");
     const [theme, setTheme] = useState('dark');
 
     const handleMenuClick = (item) => {
@@ -53,8 +53,10 @@ const Navbar = () => {
     useEffect(() => {
         // console.log('visited ', location, menuItems.find(menuItem => location.pathname === menuItem.path));
 
-        setCurrent(menuItems.find(menuItem => location.pathname === menuItem.path).key);
-        setActiveMenu(false);
+        if (!location.pathname.includes('/crypto')) {
+            setCurrent(menuItems.find(menuItem => location.pathname === menuItem.path).key);
+            setActiveMenu(false);
+        }
 
         if (screenSize > 800) {
             setActiveMenu(true);

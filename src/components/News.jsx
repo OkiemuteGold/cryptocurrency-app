@@ -7,8 +7,7 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery, useGetTrendingNewsQuery } from "../services/cryptoNewsApi";
 import Loader from "./Loader";
 
-const demoImage =
-    "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
+import demoImage from '../images/demo-image.png';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -30,7 +29,7 @@ const News = ({ simplified }) => {
 
     if (!cryptoNews?.value) return <Loader />;
 
-    console.log(cryptoNews, data, trendingNews?.value);
+    // console.log(cryptoNews, data, trendingNews?.value);
 
     return (
         <Row gutter={[24, 24]}>
@@ -47,7 +46,7 @@ const News = ({ simplified }) => {
                     <Select
                         showSearch
                         className="select-news"
-                        placeholder="Select or search crypto"
+                        placeholder="Select or search a crypto"
                         optionFilterProp="children"
                         onChange={(value) => setNewsCategory(value)}
                         filterOption={(input, option) =>
