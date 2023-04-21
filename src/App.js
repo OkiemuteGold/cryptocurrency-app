@@ -5,7 +5,7 @@ import { Layout } from 'antd';
 
 import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar, Footer } from './components';
 
-import './app.css';
+import './App.css';
 
 function App() {
     return (
