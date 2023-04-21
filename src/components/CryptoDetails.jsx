@@ -150,8 +150,8 @@ const CryptoDetails = () => {
                         </p>
                     </Col>
 
-                    {stats.map(({ icon, title, value }) => (
-                        <Col className="coin-stats" key={title}>
+                    {stats.map(({ icon, title, value }, i) => (
+                        <Col className="coin-stats" key={i}>
                             <Col className="coin-stats-name">
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -175,8 +175,8 @@ const CryptoDetails = () => {
                         </p>
                     </Col>
 
-                    {genericStats.map(({ icon, title, value }) => (
-                        <Col className="coin-stats" key={title}>
+                    {genericStats.map(({ icon, title, value }, i) => (
+                        <Col className="coin-stats" key={i}>
                             <Col className="coin-stats-name">
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -203,8 +203,8 @@ const CryptoDetails = () => {
                     </Title>
 
                     <Row gutter={[25, 0]}>
-                        {cryptoDetails.links?.map((link) => (
-                            <Col xs={24} sm={12} className="coin-link" key={link.name}>
+                        {cryptoDetails.links?.map((link, i) => (
+                            <Col xs={24} sm={12} className="coin-link" key={i}>
                                 <Title level={5} className="link-name">
                                     {link.type}
                                 </Title>
