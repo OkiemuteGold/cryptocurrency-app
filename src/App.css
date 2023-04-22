@@ -1,9 +1,11 @@
 :root {
     --black0:#000;
     --white:#fff;
-    --whitef9: #F9F9F9;
+    --whitef9: #f9f9f9;
+    --whitef5: #f5f5f5;
     --blue: #0071bd;
-    --darkBlue: #001529;
+    --darkBlue1: #020f1b;
+    --darkBlue2: #0a1a29;
     --light-blue: #e6f7ff;
     --grayd9: #d9d9d9;
     --graye2: #e2e2e2;
@@ -28,7 +30,7 @@
 .nav-container {
     height: 100vh;
     margin: 0px;
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlue1);
     width: 240px;
 }
 
@@ -89,8 +91,13 @@
     overflow-y: auto;
 }
 
+.ant-menu-dark {
+    background-color: var(--darkBlue1);
+}
+
 .contents {
     min-height: auto;
+    background-color: var(--darkBlue2);
 }
 
 .routes {
@@ -457,7 +464,7 @@
     gap: 8px;
     padding: 20px;
     margin-top: auto;
-    background-color: var(--darkBlue);
+    background-color: var(--darkBlue1);
 }
 
 .footer .ant-space {
@@ -469,11 +476,19 @@
 }
 
 /* light theme styles */
+.light .contents {
+    background-color: var(--whitef5);
+}
+
 .light .navbar, 
-.light.nav-container, 
+.light .nav-container, 
 .light .logo-container,
 .light .footer {
     background-color: var(--white);
+}
+
+.light .footer h5 {
+    color: var(--black0) !important;
 }
 
 .light .ant-avatar-image {
@@ -484,6 +499,8 @@
 .light .anticon {
    color: var(--black0);
 }
+
+/* light theme styles end */
 
 @media screen and (max-width:1000px) {
     .stats-container,

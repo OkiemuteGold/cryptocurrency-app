@@ -30,7 +30,7 @@ export const cryptoApi = createApi({
 
         // modified /exchanges for each crypto
         getExchanges: builder.query({
-            query: (coinId) => createRequest(`/coin/${coinId}/exchanges?limit=10&orderBy=24hVolume`),
+            query: ({ coinId, limit }) => createRequest(`/coin/${coinId}/exchanges?limit=${limit}&orderBy=24hVolume`),
         }),
     }),
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -8,8 +9,11 @@ import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar, Foo
 import './App.css';
 
 function App() {
+    const themeMode = useSelector(state => state.theme.themeMode)
+    console.log(themeMode);
+
     return (
-        <div className="app">
+        <div className={`app ${themeMode}`}>
             <div className="navbar">
                 <Navbar />
             </div>

@@ -12,21 +12,27 @@ const { Option } = Select;
 
 const Exchanges = () => {
     const { data: cryptos, isFetching } = useGetCryptosQuery(100);
+    let limit = 15;
 
-    const [cryptoType, setCryptoType] = useState(cryptos?.data?.coins[0].uuid);
+    const [cryptoType, setCryptoType] = useState({
+        coinId: cryptos?.data?.coins[0].uuid,
+        limit
+    });
 
     const { data: exchanges } = useGetExchangesQuery(cryptoType);
 
     const exchangesList = exchanges?.data?.exchanges;
 
-    console.log(exchangesList, cryptos);
+    // console.log(exchangesList, cryptos);
 
     useEffect(() => {
-        setCryptoType(cryptos?.data?.coins[0].uuid);
+        setCryptoType({
+            coinId: cryptos?.data?.coins[0].uuid,
+            limit
+        });
     }, [cryptos?.data]);
 
-    // Note: To access this endpoint you need premium plan
-    if (isFetching) return <Loader />;
+    if (isFetching || !exchangesList) return <Loader />;
 
     return (
         <>
@@ -37,7 +43,10 @@ const Exchanges = () => {
                         className="select-news"
                         placeholder="Select or search a crypto"
                         optionFilterProp="children"
-                        onChange={(value) => setCryptoType(value)}
+                        onChange={(value) => setCryptoType({
+                            coinId: value,
+                            limit
+                        })}
                         filterOption={(input, option) =>
                             // console.log(input, option)
                             option.children[1]
@@ -60,6 +69,16 @@ const Exchanges = () => {
                         ))}
                     </Select>
                 </Col>
+
+                <Col span={24}>
+                    <Typography.Text>
+                        Showing top {cryptoType?.limit} exchanges for {
+                            cryptos?.data?.coins?.find(
+                                item => cryptoType?.coinId === item.uuid
+                            ).name
+                        }
+                    </Typography.Text>
+                </Col>
             </Row>
 
             <Row className="exchanges-header">
@@ -71,11 +90,10 @@ const Exchanges = () => {
             </Row>
 
             <Row className="exchanges-body">
-                {exchangesList?.map((exchange, i) => (
-                    <Col span={24}>
+                {exchangesList.map((exchange, i) => (
+                    <Col span={24} key={i}>
                         <Collapse>
                             <Panel
-                                key={i}
                                 showArrow={false}
                                 header={(
                                     <Row className="panel-row">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useLocation } from "react-router-dom";
 
 import { Button, Menu, Typography, Avatar, Switch } from 'antd';
@@ -10,7 +11,12 @@ import {
 import icon from '../images/cryptocurrency.png';
 import { menuItems } from '../data/menu';
 
+import { changeTheme } from '../app/themeSlice';
+
 const Navbar = () => {
+    const themeMode = useSelector(state => state.theme.themeMode)
+    const dispatch = useDispatch()
+
     const [activeMenu, setActiveMenu] = useState(true);
     // const [isActiveMenu, setIsActiveMenu] = useState(false)
 
@@ -19,7 +25,7 @@ const Navbar = () => {
     const location = useLocation();
 
     const [current, setCurrent] = useState("");
-    const [theme, setTheme] = useState('dark');
+    // const [theme, setTheme] = useState('dark');
 
     const handleMenuClick = (item) => {
         const clicked = menuItems.find(menuItem => menuItem.key === item.key);
@@ -28,8 +34,8 @@ const Navbar = () => {
         setCurrent(clicked.key);
     }
 
-    const changeTheme = (value) => {
-        setTheme(value ? 'light' : 'dark');
+    const handleThemeChange = (value) => {
+        dispatch(changeTheme(value ? 'light' : 'dark'))
     };
 
     useEffect(() => {
@@ -64,7 +70,7 @@ const Navbar = () => {
     }, [location, screenSize])
 
     return (
-        <div className={`nav-container ${theme}`}>
+        <div className="nav-container">
             <div className="logo-container">
                 <NavLink to="/">
                     <Avatar src={icon} size="large" />
@@ -83,7 +89,7 @@ const Navbar = () => {
                         handleMenuClick(e)
                     }}
                     selectedKeys={[current]}
-                    theme={theme}
+                    theme={themeMode}
                     mode="vertical"
                     items={menuItems}
                 />
@@ -111,8 +117,8 @@ const Navbar = () => {
 
             <div className="theme-switcher">
                 <Switch
-                    checked={theme === 'light'}
-                    onChange={changeTheme}
+                    checked={themeMode === 'light'}
+                    onChange={handleThemeChange}
                     checkedChildren="Light"
                     unCheckedChildren="Dark"
                 />
