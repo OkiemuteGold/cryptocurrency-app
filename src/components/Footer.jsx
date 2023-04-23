@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Space, Typography } from 'antd'
 
+const defaultYear = 2023;
+const currentYear = new Date().getFullYear();
+
 const Footer = () => {
+    const [year] = useState(currentYear);
+    const [footerYear, setFooterYear] = useState(defaultYear);
+
+    useEffect(() => {
+        const timeline = `${defaultYear} - ${year}`;
+        const copyrightYear = year > defaultYear ? timeline : defaultYear;
+        setFooterYear(copyrightYear);
+    }, [year]);
+
     return (
         <>
             <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>
-                Copyright © 2023 { }
+                Copyright © {footerYear} { }
                 <a href="https://github.com/OkiemuteGold" target="_blank" rel="noopener noreferrer">
                     OkiemuteGold
                 </a>
