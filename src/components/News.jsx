@@ -35,7 +35,7 @@ const News = ({ simplified }) => {
     //     }
     // }, [trendingNews]);
 
-    if (!cryptoNews?.value) return <Loader />;
+    if (!cryptoNews?.value || !trendingNews?.value || !data?.data) return <Loader />;
 
     // console.log(cryptoNews, data, trendingNews?.value);
 
