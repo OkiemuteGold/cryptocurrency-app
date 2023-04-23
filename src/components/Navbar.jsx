@@ -3,10 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useLocation } from "react-router-dom";
 
 import { Button, Menu, Typography, Avatar, Switch } from 'antd';
-import {
-    // HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, 
-    MenuOutlined
-} from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 
 import icon from '../images/cryptocurrency.png';
 import { menuItems } from '../data/menu';
