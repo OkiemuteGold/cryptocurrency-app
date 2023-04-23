@@ -22,7 +22,7 @@ const Homepage = () => {
 
     return (
         <>
-            <Title level={2} className="heading">
+            <Title level={2} className=" heading title">
                 Global Crypto Stats
             </Title>
 
@@ -79,7 +79,7 @@ const Homepage = () => {
             </Row>
 
             <div className="home-heading-container">
-                <Title level={2} className="home-title">
+                <Title level={2} className="title">
                     Top 10 Cryptos In The World
                 </Title>
 
@@ -91,7 +91,7 @@ const Homepage = () => {
             <Cryptocurrencies simplified />
 
             <div className="home-heading-container">
-                <Title level={2} className="home-title">
+                <Title level={2} className="title">
                     Latest Crypto News
                 </Title>
 

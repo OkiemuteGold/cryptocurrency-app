@@ -30,6 +30,8 @@ const Exchanges = () => {
             coinId: cryptos?.data?.coins[0].uuid,
             limit
         });
+
+        // eslint-disable-next-line
     }, [cryptos?.data]);
 
     if (isFetching || !exchangesList) return <Loader />;
@@ -71,22 +73,30 @@ const Exchanges = () => {
                 </Col>
 
                 <Col span={24}>
-                    <Typography.Text>
+                    <p className="exchange-text">
                         Showing top {cryptoType?.limit} exchanges for {
                             cryptos?.data?.coins?.find(
                                 item => cryptoType?.coinId === item.uuid
                             ).name
                         }
-                    </Typography.Text>
+                    </p>
                 </Col>
             </Row>
 
             <Row className="exchanges-header">
-                <Col span={10}>Exchanges</Col>
+                <Col span={10}>
+                    <Text>Exchanges</Text>
+                </Col>
                 {/* 24h Trade Volume, marketShare */}
-                <Col span={4}>Markets</Col>
-                <Col span={6}>Price</Col>
-                <Col span={4}>BTC Price</Col>
+                <Col span={4}>
+                    <Text>Markets</Text>
+                </Col>
+                <Col span={6}>
+                    <Text>Price</Text>
+                </Col>
+                <Col span={4}>
+                    <Text>BTC Price</Text>
+                </Col>
             </Row>
 
             <Row className="exchanges-body">

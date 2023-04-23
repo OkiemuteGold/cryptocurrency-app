@@ -4,7 +4,7 @@ export const themeSlice = createSlice({
     name: 'theme',
 
     initialState: {
-        themeMode: "dark"
+        themeMode: "light"
     },
 
     reducers: {

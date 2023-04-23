@@ -27,7 +27,7 @@ const Cryptocurrencies = ({ simplified }) => {
     return (
         <>
             {!simplified && (
-                <Typography.Title level={2} className="home-title text-center">
+                <Typography.Title level={2} className="title text-center">
                     Top Cryptocurrencies
                 </Typography.Title>
             )}
@@ -43,9 +43,9 @@ const Cryptocurrencies = ({ simplified }) => {
 
 
             {searchTerm && cryptos.length === 0 && (
-                <Typography.Title level={3} className="no-result text-center">
+                <p className="no-result text-center">
                     No result found for <span>'{searchTerm}'</span>
-                </Typography.Title>
+                </p>
             )}
 
             <Row gutter={[25, 25]} className="crypto-card-container">

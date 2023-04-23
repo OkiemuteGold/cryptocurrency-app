@@ -194,7 +194,9 @@ const CryptoDetails = () => {
                         What is {cryptoDetails.name}?
                     </Title>
 
-                    {HTMLReactParser(cryptoDetails.description)}
+                    <p>
+                        {HTMLReactParser(cryptoDetails.description)}
+                    </p>
                 </Col>
 
                 <Col className="coin-links">

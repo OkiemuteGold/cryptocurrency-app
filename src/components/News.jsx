@@ -35,7 +35,7 @@ const News = ({ simplified }) => {
         <Row gutter={[24, 24]}>
             {!simplified && (
                 <Col span={24}>
-                    <Title level={2} className="home-title">
+                    <Title level={2} className="title">
                         Top Cryptocurrency News
                     </Title>
                 </Col>
@@ -137,7 +137,7 @@ const News = ({ simplified }) => {
 
             {!simplified && (
                 <Col xs={24} xl={8} className="trending">
-                    <Title level={3} className="home-title">
+                    <Title level={3} className="title">
                         Trending Business News
                     </Title>
 

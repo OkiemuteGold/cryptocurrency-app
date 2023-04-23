@@ -25,17 +25,25 @@ const Navbar = () => {
     const location = useLocation();
 
     const [current, setCurrent] = useState("");
-    // const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState(null);
 
     const handleMenuClick = (item) => {
         const clicked = menuItems.find(menuItem => menuItem.key === item.key);
 
         // console.log('clicked ', item, clicked);
-        setCurrent(clicked.key);
+
+        if (!location.pathname.includes('/crypto/')) {
+            setCurrent(clicked.key);
+        } else {
+            setCurrent("cryptocurrencies");
+        }
     }
 
     const handleThemeChange = (value) => {
-        dispatch(changeTheme(value ? 'light' : 'dark'))
+        const mode = value ? 'dark' : 'light';
+
+        localStorage.setItem('themeMode', JSON.stringify(mode));
+        setTheme(mode);
     };
 
     useEffect(() => {
@@ -59,15 +67,25 @@ const Navbar = () => {
     useEffect(() => {
         // console.log('visited ', location, menuItems.find(menuItem => location.pathname === menuItem.path));
 
-        if (!location.pathname.includes('/crypto')) {
+        if (!location.pathname.includes('/crypto/')) {
             setCurrent(menuItems.find(menuItem => location.pathname === menuItem.path).key);
             setActiveMenu(false);
+        } else {
+            setCurrent("cryptocurrencies")
         }
 
         if (screenSize > 800) {
             setActiveMenu(true);
         }
     }, [location, screenSize])
+
+    useEffect(() => {
+        let currentTheme = JSON.parse(localStorage.getItem('themeMode'));
+
+        dispatch(changeTheme(currentTheme ? currentTheme : "light"))
+
+        // eslint-disable-next-line
+    }, [theme]);
 
     return (
         <div className="nav-container">
@@ -117,10 +135,10 @@ const Navbar = () => {
 
             <div className="theme-switcher">
                 <Switch
-                    checked={themeMode === 'light'}
+                    checked={themeMode === 'dark'}
                     onChange={handleThemeChange}
-                    checkedChildren="Light"
-                    unCheckedChildren="Dark"
+                    checkedChildren="Dark"
+                    unCheckedChildren="Light"
                 />
             </div>
         </div>
