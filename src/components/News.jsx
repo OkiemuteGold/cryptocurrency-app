@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
@@ -15,7 +15,7 @@ const { Option } = Select;
 const News = ({ simplified }) => {
     const [newsCategory, setNewsCategory] = useState("Bitcoin");
 
-    const { data, isFetching } = useGetCryptosQuery(100);
+    const { data } = useGetCryptosQuery(100);
 
     const { data: cryptoNews } = useGetCryptoNewsQuery({
         newsCategory,
@@ -27,22 +27,15 @@ const News = ({ simplified }) => {
         count: 6,
     })
 
-    const [cryptoNewsInfo, setCryptoNewsInfo] = useState([]);
-    const [trendingNewsInfo, setTrendingNewsInfo] = useState([]);
+    // const [cryptoNewsInfo, setCryptoNewsInfo] = useState([]);
 
-    useEffect(() => {
-        if (cryptoNews?.value) {
-            setCryptoNewsInfo(cryptoNews?.value);
-        }
-    }, [cryptoNews]);
+    // useEffect(() => {
+    //     if (cryptoNews?.value) {
+    //         setCryptoNewsInfo(cryptoNews?.value);
+    //     }
+    // }, [cryptoNews]);
 
-    useEffect(() => {
-        if (trendingNews?.value) {
-            setTrendingNewsInfo(trendingNews?.value.slice(0, 6));
-        }
-    }, [trendingNews]);
-
-    if (isFetching) return <Loader />;
+    if (!cryptoNews?.value) return <Loader />;
 
     // console.log(cryptoNews, data, trendingNews?.value);
 
@@ -90,7 +83,7 @@ const News = ({ simplified }) => {
 
             <Col xs={24} xl={simplified ? 24 : 16}>
                 <Row gutter={[24, 24]}>
-                    {cryptoNewsInfo.map((news, i) => (
+                    {cryptoNews?.value.map((news, i) => (
                         <Col xs={24} sm={simplified && 12} xl={simplified && 8} key={i}>
                             <Card hoverable className={`news-card ${simplified && 'simplified'}`}>
                                 <a
@@ -157,7 +150,7 @@ const News = ({ simplified }) => {
                     </Title>
 
                     <Row gutter={[24, 24]}>
-                        {trendingNewsInfo.map((news, i) => (
+                        {trendingNews?.value.slice(0, 6).map((news, i) => (
                             <Col xs={24} sm={12} xl={24} key={i}>
                                 <Card hoverable className="news-card">
                                     <a
