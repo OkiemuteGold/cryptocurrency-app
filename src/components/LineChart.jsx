@@ -4,6 +4,10 @@ import React from 'react';
 import { Col, Row, Typography } from 'antd';
 
 import { Line } from 'react-chartjs-2';
+
+// import { Chart, registerables } from 'chart.js';
+// Chart.register(...registerables)
+
 import {
     Chart, CategoryScale,
     LinearScale,
@@ -28,11 +32,11 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     const coinPrice = [];
     const coinTimestamp = [];
 
-    for (let i = 0; i < coinHistory?.history?.length > 0; i += 1) {
+    for (let i = 0; i < coinHistory?.history?.length; i += 1) {
         coinPrice.push(coinHistory?.history[i].price);
     }
 
-    for (let i = 0; i < coinHistory?.history?.length > 0; i += 1) {
+    for (let i = 0; i < coinHistory?.history?.length; i += 1) {
         coinTimestamp.push(new Date(coinHistory?.history[i].timestamp).toLocaleDateString());
     }
 
