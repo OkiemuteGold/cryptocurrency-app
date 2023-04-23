@@ -13,7 +13,7 @@ const { Text, Title } = Typography;
 const { Option } = Select;
 
 const News = ({ simplified }) => {
-    const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
+    const [newsCategory, setNewsCategory] = useState("Bitcoin");
 
     const { data } = useGetCryptosQuery(100);
 
@@ -26,6 +26,14 @@ const News = ({ simplified }) => {
         newsCategory: 'Business',
         count: 6,
     })
+
+    // const [trendingNewsInfo, setTrendingNewsInfo] = useState([]);
+
+    // useEffect(() => {
+    //     if (trendingNews?.value) {
+    //         setTrendingNewsInfo(trendingNews?.value);
+    //     }
+    // }, [trendingNews]);
 
     if (!cryptoNews?.value) return <Loader />;
 
@@ -66,7 +74,7 @@ const News = ({ simplified }) => {
                                     height={18}
                                     width={18}
                                 />
-                                {currency.name}
+                                {currency.name} - {currency.symbol}
                             </Option>
                         ))}
                     </Select>

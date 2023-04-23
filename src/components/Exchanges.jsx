@@ -66,7 +66,7 @@ const Exchanges = () => {
                                     height={18}
                                     width={18}
                                 />
-                                {currency.name}
+                                {currency.name} - {currency.symbol}
                             </Option>
                         ))}
                     </Select>
