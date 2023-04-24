@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
 import { Routes, Route } from 'react-router-dom';
+
 import { Layout } from 'antd';
 
-import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar, Footer } from './components';
+import { Exchanges, Homepage, News, StockMarketNews, Cryptocurrencies, CryptoDetails, Navbar, Footer } from './components';
 
 import './App.css';
 
@@ -27,6 +27,7 @@ function App() {
                             <Route path='/cryptocurrencies' element={<Cryptocurrencies />} />
                             <Route path='/crypto/:coinId' element={<CryptoDetails />} />
                             <Route path='/news' element={<News />} />
+                            <Route path='/stock-market' element={<StockMarketNews />} />
                         </Routes>
                     </div>
                 </Layout>

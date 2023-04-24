@@ -9,6 +9,7 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
 import Loader from "./Loader";
+import StockMarketNews from "./StockMarketNews";
 
 const { Title } = Typography;
 
@@ -101,6 +102,18 @@ const Homepage = () => {
             </div>
 
             <News simplified />
+
+            <div className="home-heading-container">
+                <Title level={2} className="title">
+                    Stock Market News
+                </Title>
+
+                <Title level={3} className="show-more">
+                    <Link to="/stock-market">More on stocks</Link>
+                </Title>
+            </div>
+
+            <StockMarketNews simplified />
         </>
     );
 };

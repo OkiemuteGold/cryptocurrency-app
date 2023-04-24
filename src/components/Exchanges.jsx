@@ -62,7 +62,7 @@ const Exchanges = () => {
                             <Option value={currency.uuid} key={i}>
                                 <img
                                     src={currency.iconUrl}
-                                    alt={currency.name}
+                                    alt={`${currency.name} (${currency.symbol})`}
                                     height={18}
                                     width={18}
                                 />
@@ -73,7 +73,7 @@ const Exchanges = () => {
                 </Col>
 
                 <Col span={24}>
-                    <p className="exchange-text">
+                    <p className="exchange-intro-title">
                         Showing top {cryptoType?.limit} exchanges for {
                             cryptos?.data?.coins?.find(
                                 item => cryptoType?.coinId === item.uuid
@@ -85,11 +85,11 @@ const Exchanges = () => {
 
             <Row className="exchanges-header">
                 <Col span={10}>
-                    <Text>Exchanges</Text>
+                    <Text>Exchange/Rank</Text>
                 </Col>
                 {/* 24h Trade Volume, marketShare */}
                 <Col span={4}>
-                    <Text>Markets</Text>
+                    <Text>Market</Text>
                 </Col>
                 <Col span={6}>
                     <Text>Price</Text>
@@ -108,7 +108,7 @@ const Exchanges = () => {
                                 header={(
                                     <Row className="panel-row">
                                         <Col span={10}>
-                                            <Text><strong>{exchange.rank}.</strong></Text>
+                                            <Text className="exchange-rank"><strong>{exchange.rank}.</strong></Text>
 
                                             <Avatar className="exchange-image" src={exchange.iconUrl} />
 

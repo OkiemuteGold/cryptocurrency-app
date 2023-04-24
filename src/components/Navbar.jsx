@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 
-import { Button, Menu, Typography, Avatar, Switch } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
+import { Button, Menu, Typography, Avatar, Switch } from "antd";
+import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 
-import icon from '../images/cryptocurrency.png';
-import { menuItems } from '../data/menu';
+import icon from "../images/cryptocurrency.png";
+import { menuItems } from "../data/menu";
 
-import { changeTheme } from '../app/themeSlice';
+import { changeTheme } from "../app/themeSlice";
 
 const Navbar = () => {
-    const themeMode = useSelector(state => state.theme.themeMode)
-    const dispatch = useDispatch()
+    const themeMode = useSelector((state) => state.theme.themeMode);
+    const dispatch = useDispatch();
 
     const [activeMenu, setActiveMenu] = useState(true);
     // const [isActiveMenu, setIsActiveMenu] = useState(false)
@@ -25,32 +25,32 @@ const Navbar = () => {
     const [theme, setTheme] = useState(null);
 
     const handleMenuClick = (item) => {
-        const clicked = menuItems.find(menuItem => menuItem.key === item.key);
+        const clicked = menuItems.find((menuItem) => menuItem.key === item.key);
 
         // console.log('clicked ', item, clicked);
 
-        if (!location.pathname.includes('/crypto/')) {
+        if (!location.pathname.includes("/crypto/")) {
             setCurrent(clicked.key);
         } else {
-            setCurrent("cryptocurrencies");
+            setCurrent("");
         }
-    }
+    };
 
     const handleThemeChange = (value) => {
-        const mode = value ? 'dark' : 'light';
+        const mode = value ? "dark" : "light";
 
-        localStorage.setItem('themeMode', JSON.stringify(mode));
+        localStorage.setItem("themeMode", JSON.stringify(mode));
         setTheme(mode);
     };
 
     useEffect(() => {
         const handleResize = () => setScreenSize(window.innerWidth);
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         handleResize();
 
-        return () => window.removeEventListener('resize', handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useEffect(() => {
@@ -64,22 +64,30 @@ const Navbar = () => {
     useEffect(() => {
         // console.log('visited ', location, menuItems.find(menuItem => location.pathname === menuItem.path));
 
-        if (!location.pathname.includes('/crypto/')) {
-            setCurrent(menuItems.find(menuItem => location.pathname === menuItem.path).key);
+        if (!location.pathname.includes("/crypto/")) {
+            setCurrent(
+                menuItems.find(
+                    (menuItem) => location.pathname === menuItem.path
+                ).key
+            );
             setActiveMenu(false);
         } else {
-            setCurrent("cryptocurrencies")
+            setCurrent("");
         }
 
         if (screenSize > 800) {
             setActiveMenu(true);
         }
-    }, [location, screenSize])
+    }, [location, screenSize]);
 
     useEffect(() => {
-        let currentTheme = JSON.parse(localStorage.getItem('themeMode'));
+        window.scrollTo(0, 0);
+    }, [location]);
 
-        dispatch(changeTheme(currentTheme ? currentTheme : "light"))
+    useEffect(() => {
+        let currentTheme = JSON.parse(localStorage.getItem("themeMode"));
+
+        dispatch(changeTheme(currentTheme ? currentTheme : "light"));
 
         // eslint-disable-next-line
     }, [theme]);
@@ -95,13 +103,22 @@ const Navbar = () => {
                     <NavLink to="/">CryptoInfo</NavLink>
                 </Typography.Title>
 
-                <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
+                <Button
+                    className="menu-control-container"
+                    onClick={() => setActiveMenu(!activeMenu)}
+                >
+                    {!activeMenu ? (
+                        <MenuOutlined aria-label="open menu button" />
+                    ) : (
+                        <CloseOutlined aria-label="close menu button" />
+                    )}
+                </Button>
             </div>
 
             {activeMenu && (
                 <Menu
                     onClick={(e) => {
-                        handleMenuClick(e)
+                        handleMenuClick(e);
                     }}
                     selectedKeys={[current]}
                     theme={themeMode}
@@ -132,7 +149,7 @@ const Navbar = () => {
 
             <div className="theme-switcher">
                 <Switch
-                    checked={themeMode === 'dark'}
+                    checked={themeMode === "dark"}
                     onChange={handleThemeChange}
                     checkedChildren="Dark"
                     unCheckedChildren="Light"

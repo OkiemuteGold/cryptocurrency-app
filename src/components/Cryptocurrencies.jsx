@@ -22,7 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
         setCryptos(filteredData);
     }, [cryptosList, searchTerm]);
 
-    if (isFetching) return <Loader />;
+    if (isFetching || !cryptos) return <Loader />;
 
     return (
         <>

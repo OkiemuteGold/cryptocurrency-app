@@ -153,6 +153,7 @@ p {
     font-size: 1.25rem;
     font-style: italic;
     color: var(--textColor) !important;
+    margin-bottom: 40px;
 }
 
 .main {
@@ -180,7 +181,7 @@ p {
 }
 
 .coin-detail-container {
-    padding: 0 30px;
+    padding: 0 25px;
 }
 
 .coin-heading-container {
@@ -192,6 +193,10 @@ p {
     border-bottom: 1px solid var(--grayd9);
     padding-bottom: 20px;
     gap: 10px;
+}
+
+.coin-name {
+    font-size: 1.75rem !important;
 }
 
 .coin-name,
@@ -217,9 +222,15 @@ p {
     gap: 40px;
 }
 
+.coin-links > .ant-row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
 .coin-details-heading {
-    font-size: 1.375rem;
+    font-size: 1.375rem !important;
     margin-top: 30px;
+    margin-bottom: 15px !important;
 }
 
 .coin-stats {
@@ -227,20 +238,20 @@ p {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--grayd9);
-    font-size: 1rem;
     opacity: 0.9;
-    padding: 20px;
+    padding: 20px 12px;
 
 }
 
-.coin-stats-name {
+.coin-stats-name,
+.link-name {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1rem;
+    gap: 8px;
+    font-size: 14px !important;
 }
 
-.coin-stats-name .ant-typography,
+.coin-stats-name,
 .link-name {
     color: var(--textColor) !important;
 }
@@ -250,7 +261,7 @@ p {
 }
 
 .coin-link:hover .link-name, 
-.coin-stats:hover .coin-stats-name .ant-typography {
+.coin-stats:hover .coin-stats-name {
     color: var(--gray47) !important;
 }
 
@@ -260,7 +271,7 @@ p {
 }
 
 .coin-value-statistics-heading p {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .coin-desc-link {
@@ -279,21 +290,25 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     border-bottom: 1px solid var(--grayd9);
-    padding: 20px !important;
+    padding: 20px 12px !important;
 }
 
 .link-name {
-    font-size: 14px !important;
     text-transform: capitalize;
     margin-bottom: 0 !important;
+    white-space: nowrap;
+}
+
+.link-name .telegram {
+    transform: rotate(-45deg);
 }
 
 .coin-link a {
     font-weight: 500;
     font-size: 14px !important;
-    color: var(--blue);
+    word-break: break-all;
 }
 
 .select-news {
@@ -337,7 +352,8 @@ p {
 }
 
 .trending .title {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .news-image-container .img {
@@ -390,6 +406,7 @@ p {
 }
 
 .chart-title {
+    font-size: 1.5rem !important;
     color: var(--title) !important;
     margin-bottom: 0 !important;
 }
@@ -435,7 +452,7 @@ p {
     text-underline-offset: 4px;
 }
 
-.exchange-text {
+.exchange-intro-title {
     font-size: 16px;
     color: var(--textColor) !important;
     margin-top: 5px;
@@ -453,7 +470,13 @@ p {
 }
 
 .exchanges-body {
-    row-gap: 10px;
+    row-gap: 12px;
+}
+
+.panel-row,
+.panel-row > .ant-col {
+    display: flex;
+    align-items: center;
 }
 
 .exchanges-body .ant-collapse-header {
@@ -467,7 +490,8 @@ p {
     border-radius: 6px 6px 0 0 !important;
 }
 
-.exchanges-body .ant-collapse-header:hover {
+.exchanges-body .ant-collapse-header:hover,
+.exchanges-body .ant-collapse-item-active .ant-collapse-header {
     background-color: var(--graye5);
 }
 
@@ -475,7 +499,8 @@ p {
     color: var(--title);
 }
 
-.exchanges-body .ant-collapse-header:hover * {
+.exchanges-body .ant-collapse-header:hover *,
+.exchanges-body .ant-collapse-item-active .ant-collapse-header * {
     color: var(--black0);
 }
 
@@ -484,12 +509,16 @@ p {
     color: var(--textColor);
 }
 
-.exchange-image {
-    margin: 0 10px 0 15px;
+.panel-row .exchange-image {
+    margin: 0 10px;
+    min-width: 28px;
+    width: 28px;
+    min-height: 28px;
+    height: 28px;
 }
 
-.panel-row {
-    align-items: center;
+.panel-row .exchange-rank {
+    white-space: nowrap;
 }
 
 .btc-price-equivalent {
@@ -497,6 +526,7 @@ p {
 }
 
 .search-crypto {
+    position: relative;
     width: 100%;
     max-width: 280px;
     margin: 30px auto 30px auto;
@@ -505,6 +535,18 @@ p {
 .search-crypto input {
     height: 46px;
     padding: 8px 16px;
+}
+
+.search-crypto .button {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 4px;
+    cursor: pointer;
 }
 
 .crypto-card {
@@ -524,7 +566,7 @@ p {
     width: 100%;
     max-width: 200px;
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .select-time-period .ant-select-selector {
@@ -634,6 +676,10 @@ p {
         align-items: stretch;
         row-gap: 8px;
     }
+
+    .coin-heading-container {
+        align-items: stretch;
+    }
 }
 
 @media screen and (max-width: 560px){
@@ -666,7 +712,11 @@ p {
         padding-right: 12px !important;
     }
 
-    .exchange-image {
+    .panel-row .exchange-image {
+        min-width: 20px;
+        width: 20px;
+        min-height: 20px;
+        height: 20px;
         margin: 0 8px 0 10px;
     }
 }
@@ -681,6 +731,6 @@ p {
     }
 
     .coin-detail-container {
-        padding: 0 15px;
+        padding: 0;
     }
 }

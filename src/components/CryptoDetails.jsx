@@ -15,6 +15,20 @@ import {
     CheckOutlined,
     NumberOutlined,
     ThunderboltOutlined,
+    GlobalOutlined,
+    GithubOutlined,
+    FilePdfOutlined,
+    FileSearchOutlined,
+    RedditOutlined,
+    SendOutlined,
+    FacebookOutlined,
+    YoutubeOutlined,
+    TwitterOutlined,
+    InstagramOutlined,
+    MediumOutlined,
+    WeiboOutlined,
+    CustomerServiceOutlined,
+    WechatOutlined,
 } from "@ant-design/icons";
 
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from "../services/cryptoApi";
@@ -55,19 +69,19 @@ const CryptoDetails = () => {
         },
         {
             title: "24h Volume",
-            value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)
+            value: `${cryptoDetails?.volume && millify(cryptoDetails?.volume)
                 }`,
             icon: <ThunderboltOutlined />,
         },
         {
             title: "Market Cap",
-            value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
+            value: `$${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
                 }`,
             icon: <DollarCircleOutlined />,
         },
         {
-            title: "All-time-high(daily avg.)",
-            value: `$ ${cryptoDetails?.allTimeHigh?.price &&
+            title: "All-time-high",
+            value: `$${cryptoDetails?.allTimeHigh?.price &&
                 millify(cryptoDetails?.allTimeHigh?.price)
                 }`,
             icon: <TrophyOutlined />,
@@ -110,10 +124,28 @@ const CryptoDetails = () => {
         },
     ];
 
+    const allLinkTypes = [
+        "website",
+        "github",
+        "reddit",
+        "explorer",
+        "whitepaper",
+        "youtube",
+        "twitter",
+        "facebook",
+        'instagram',
+        "telegram",
+        "medium",
+        "discord",
+        "sina-weibo",
+        "weibo",
+        "wechat"
+    ];
+
     return (
         <Col className="coin-detail-container">
             <Col className="coin-heading-container">
-                <Title level={2} className="coin-name">
+                <Title level={1} className="coin-name">
                     {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
                 </Title>
 
@@ -152,10 +184,10 @@ const CryptoDetails = () => {
 
                     {stats.map(({ icon, title, value }, i) => (
                         <Col className="coin-stats" key={i}>
-                            <Col className="coin-stats-name">
-                                <Text>{icon}</Text>
-                                <Text>{title}</Text>
-                            </Col>
+                            <Text className="coin-stats-name">
+                                {icon}
+                                {title}
+                            </Text>
 
                             <Text className="stats">{value}</Text>
                         </Col>
@@ -177,10 +209,10 @@ const CryptoDetails = () => {
 
                     {genericStats.map(({ icon, title, value }, i) => (
                         <Col className="coin-stats" key={i}>
-                            <Col className="coin-stats-name">
-                                <Text>{icon}</Text>
-                                <Text>{title}</Text>
-                            </Col>
+                            <Text className="coin-stats-name">
+                                {icon}
+                                {title}
+                            </Text>
 
                             <Text className="stats">{value}</Text>
                         </Col>
@@ -205,17 +237,49 @@ const CryptoDetails = () => {
                     </Title>
 
                     <Row gutter={[25, 0]}>
-                        {cryptoDetails.links?.map((link, i) => (
-                            <Col xs={24} sm={12} className="coin-link" key={i}>
-                                <Title level={5} className="link-name">
-                                    {link.type}
-                                </Title>
+                        {cryptoDetails.links?.map((link, i) => {
+                            const { type, name, url } = link;
 
-                                <a href={link.url} target="_blank" rel="noreferrer">
-                                    {link.name}
-                                </a>
-                            </Col>
-                        ))}
+                            return (
+                                <Col
+                                    xs={24}
+                                    sm={12}
+                                    className="coin-link"
+                                    key={i}
+                                >
+                                    <Title level={5} className="link-name">
+                                        {allLinkTypes.includes(type.toLowerCase()) ? (
+                                            <>
+                                                {type.toLowerCase() === 'website' && <GlobalOutlined />}
+                                                {type.toLowerCase() === 'github' && <GithubOutlined />}
+                                                {type.toLowerCase() === 'reddit' && <RedditOutlined />}
+                                                {type.toLowerCase() === 'explorer' && <FileSearchOutlined />}
+                                                {type.toLowerCase() === 'whitepaper' && <FilePdfOutlined />}
+                                                {type.toLowerCase() === 'youtube' && <YoutubeOutlined />}
+                                                {type.toLowerCase() === 'twitter' && <TwitterOutlined />}
+                                                {type.toLowerCase() === 'instagram' && <InstagramOutlined />}
+                                                {type.toLowerCase() === 'facebook' && <FacebookOutlined />}
+                                                {type.toLowerCase() === 'telegram' && <SendOutlined className="telegram" />}
+                                                {type.toLowerCase() === 'medium' && <MediumOutlined />}
+                                                {(type.toLowerCase() === ('sina-weibo' || 'weibo')) && <WeiboOutlined />}
+                                                {type.toLowerCase() === 'discord' && <CustomerServiceOutlined />}
+                                                {type.toLowerCase() === 'wechat' && <WechatOutlined />}
+                                            </>
+                                        ) : <GlobalOutlined />}
+
+                                        {type}
+                                    </Title>
+
+                                    <a
+                                        href={url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {name}
+                                    </a>
+                                </Col>
+                            );
+                        })}
                     </Row>
                 </Col>
             </Col>

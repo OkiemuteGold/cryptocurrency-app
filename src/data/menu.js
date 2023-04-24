@@ -1,6 +1,6 @@
-import { BulbOutlined, FundOutlined, HomeOutlined, MoneyCollectOutlined } from "@ant-design/icons";
 import React from "react";
 import { Link } from "react-router-dom";
+import { BulbOutlined, FundOutlined, HomeOutlined, MoneyCollectOutlined, StockOutlined } from "@ant-design/icons";
 
 export const menuItems = [
     {
@@ -40,6 +40,16 @@ export const menuItems = [
         label: (
             <Link to="/news" aria-label="news">
                 News
+            </Link>
+        ),
+    },
+    {
+        key: 'stock-market',
+        path: '/stock-market',
+        icon: <StockOutlined />,
+        label: (
+            <Link to="/stock-market" aria-label="stock-market">
+                Stock &amp; Others
             </Link>
         ),
     },
